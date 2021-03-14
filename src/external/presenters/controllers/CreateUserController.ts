@@ -1,17 +1,17 @@
 import { Request, Response } from "express"
-import { CreateUserUseCase } from "../../../core/usecases/CreateUser/CreateUserUseCase";
+import { ICreateUser } from "../../../core/usecases/CreateUser/ICreateUser";
 
 export class CreateUserController {
     
     constructor(
-        private CreateUserCase: CreateUserUseCase
+        private createUser: ICreateUser
     ) {}
 
     async handle(request: Request, response: Response): Promise<Response> {
         const { name, email, password } = request.body;
 
         try {
-            await this.CreateUserCase.execute( {
+            await this.createUser.handle( {
                 name,
                 email,
                 password

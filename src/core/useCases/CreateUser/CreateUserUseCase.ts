@@ -2,15 +2,16 @@ import { UserDTO } from "../../../external/presenters/dtos/CreateUserDTO";
 import { User } from "../../entities/User";
 import { IUserRepository } from "../../ports/repositories/IUserRepository";
 import { IMailService } from "../../ports/services/IMailService";
+import { ICreateUser } from "./ICreateUser";
 
-export class CreateUserUseCase {  
+export class CreateUserUseCase implements ICreateUser {  
     constructor(
        private userRepository: IUserRepository,
        private mailService : IMailService
     ) {}
+
     
-    
-    async execute(userDTO: UserDTO) {
+    async handle(userDTO: UserDTO) {
         const userAlreadyExists = await this.userRepository.findByEmail(userDTO.email);
 
         if (userAlreadyExists) {
@@ -23,7 +24,11 @@ export class CreateUserUseCase {
         
         await this.userRepository.save(user);
 
-       await this.mailService.sendEmail({
+        this.sendEmailToUser(userDTO)
+    }
+
+    async sendEmailToUser(userDTO: UserDTO) {
+        await this.mailService.sendEmail({
             to : {
                 name: userDTO.name,
                 email: userDTO.email
