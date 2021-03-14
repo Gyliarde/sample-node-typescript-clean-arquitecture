@@ -1,4 +1,4 @@
-import { IMailService, IMessage } from "./IMailService";
+import { IMailService, IMessage } from "../../core/ports/services/IMailService";
 import nodemailer from 'nodemailer';
 import Mail from "nodemailer/lib/mailer";
 

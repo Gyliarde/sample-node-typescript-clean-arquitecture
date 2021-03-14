@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { createUserController } from "./useCases/CreateUser/intex";
+import { createUserController } from "../factories/CreateUserControllerFactory";
 
 const router = Router();
 
