@@ -12,13 +12,13 @@ export class CreateUserUseCase implements ICreateUser {
 
     
     async handle(userDTO: UserDTO) {
+        const user = new User(userDTO.name,userDTO.password,userDTO.email);
+
         const userAlreadyExists = await this.userRepository.findByEmail(userDTO.email);
 
         if (userAlreadyExists) {
             throw new Error('User already exists')
         }
-
-        const user = new User(userDTO);
 
         console.log(user);
         
