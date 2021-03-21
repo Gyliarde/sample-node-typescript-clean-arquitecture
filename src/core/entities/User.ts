@@ -5,12 +5,12 @@ class User {
     public readonly id: string;
     public name: string;
     public password : string;
-    public email : Email;
+    public email : string;
 
     constructor(name: string,password : string, email: string,id? : string) {
         this.name = name;
         this.password = password;
-        this.email = new Email(email);
+        this.email = email;
 
 
         if (!id) {

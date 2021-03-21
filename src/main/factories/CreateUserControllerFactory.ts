@@ -1,7 +1,7 @@
 import { CreateUserUseCase } from "../../core/usecases/CreateUser/CreateUserUseCase";
 import { CreateUserController } from "../../external/presenters/controllers/CreateUserController";
-import { PostgresUserRepository } from "../../external/repositories/PostgresRepository";
-import { MailTrapServiceImpl } from "../../external/services/MailTrapServiceImpl";
+import { PostgresUserRepository } from "../../external/adapters/repositories/PostgresRepository";
+import { MailTrapServiceImpl } from "../../external/adapters/services/MailTrapServiceImpl";
 
 const mailtrapService= new MailTrapServiceImpl();
 const postgresUserRepository = new PostgresUserRepository();
