@@ -1,10 +1,19 @@
+import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
 import { uuid } from "uuidv4";
-import { Email } from "../valueobjects/Email";
 
+@Entity()
 class User {
+
+    @PrimaryGeneratedColumn()
     public readonly id: string;
+
+    @Column()
     public name: string;
+
+    @Column()
     public password : string;
+
+    @Column()
     public email : string;
 
     constructor(name: string,password : string, email: string,id? : string) {

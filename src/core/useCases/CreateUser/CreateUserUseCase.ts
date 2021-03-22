@@ -1,5 +1,5 @@
 import { UserDTO } from "../../../external/presenters/dtos/CreateUserDTO";
-import { User } from "../../entities/User";
+import { User } from "../../entity/User";
 import { IUserRepository } from "../../ports/repositories/IUserRepository";
 import { IMailService } from "../../ports/services/IMailService";
 import { ICreateUser } from "./ICreateUser";
@@ -7,7 +7,7 @@ import { ICreateUser } from "./ICreateUser";
 export class CreateUserUseCase implements ICreateUser {  
     constructor(
        private userRepository: IUserRepository,
-       private mailService : IMailService
+       private mailService : IMailService,
     ) {}
 
     
