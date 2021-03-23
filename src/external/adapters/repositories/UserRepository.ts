@@ -1,14 +1,15 @@
+import { DeepPartial, EntityRepository, Repository } from "typeorm";
 import { User } from "../../../core/entity/User";
 import { IUserRepository } from "../../../core/ports/repositories/IUserRepository";
 
-export class UserRepository implements IUserRepository {
+@EntityRepository(User)
+export class UserRepository extends Repository<User> implements IUserRepository  {
     
-    
-    findByEmail(email: string): Promise<User> {
-        throw new Error("Method not implemented.");
+    async findByEmail(email: string): Promise<User> {
+        return await this.findOne({email});
     }
-    save(user: User): Promise<void> {
-        throw new Error("Method not implemented.");
+
+    async saveUser(user: User): Promise<User> {
+         return await this.save(user);
     }
-    
 }
