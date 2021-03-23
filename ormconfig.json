@@ -1,9 +1,9 @@
 {
    "type": "mysql",
-   "host": "18.229.160.15",
+   "host": "localhost",
    "port": 3306,
    "username": "root",
-   "password": "KeyData20#",
+   "password": "pass",
    "database": "test_type_orm",
    "synchronize": true,
    "logging": true,
