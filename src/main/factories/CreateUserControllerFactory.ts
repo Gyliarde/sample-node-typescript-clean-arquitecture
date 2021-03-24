@@ -2,9 +2,10 @@ import { CreateUserUseCase } from "../../core/usecases/CreateUser/CreateUserUseC
 import { CreateUserController } from "../../external/presenters/controllers/CreateUserController";
 import { MailTrapServiceImpl } from "../../external/adapters/services/MailTrapServiceImpl";
 import { UserRepository } from "../../external/adapters/repositories/UserRepository";
+import { getCustomRepository } from "typeorm";
 
 const mailtrapService= new MailTrapServiceImpl();
-const userRepository = new UserRepository();
+const userRepository = getCustomRepository(UserRepository)
 
 const createUserCase = new CreateUserUseCase(
     userRepository,
